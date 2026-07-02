@@ -1,0 +1,101 @@
+.footer {
+    background: var(--text-primary);
+    color: white;
+    padding: 50px 40px 30px;
+}
+.footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+.footer-brand .footer-logo {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--pink-400);
+    margin-bottom: 12px;
+}
+.footer-brand p {
+    font-size: 14px;
+    color: #bbb;
+    line-height: 1.8;
+}
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+.footer-social a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    font-size: 16px;
+}
+.footer-social a:hover { background: var(--pink-500); }
+.footer-col h4 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--pink-400);
+}
+.footer-col ul { list-style: none; }
+.footer-col li {
+    padding: 6px 0;
+    font-size: 14px;
+    color: #bbb;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.footer-col li:hover { color: var(--pink-400); }
+.footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+    color: #888;
+    margin-top: 40px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 50px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-top: 1px solid #eee;
+}
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--pink-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: var(--pink-500);
+}
+.feature-text h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.feature-text p { font-size: 13px; color: var(--text-light); }
+
+@media (max-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .features { flex-wrap: wrap; gap: 30px; padding: 30px 20px; }
+}
+@media (max-width: 480px) {
+    .footer-inner { grid-template-columns: 1fr; }
+}

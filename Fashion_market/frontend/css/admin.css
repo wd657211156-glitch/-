@@ -1,0 +1,233 @@
+.admin-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 40px;
+}
+
+.admin-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.admin-title {
+    font-size: 24px;
+    font-weight: 600;
+    padding-left: 16px;
+    position: relative;
+}
+.admin-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 4px;
+    background: var(--pink-500);
+    border-radius: 2px;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 16px;
+}
+.admin-tab {
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid var(--pink-200);
+    color: var(--text-secondary);
+    background: transparent;
+}
+.admin-tab:hover,
+.admin-tab.active {
+    background: var(--pink-500);
+    color: white;
+    border-color: var(--pink-500);
+}
+
+/* Tables */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+.admin-table th {
+    background: var(--pink-100);
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-align: left;
+}
+.admin-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    vertical-align: middle;
+}
+.admin-table tr:hover td {
+    background: #fff5f7;
+}
+
+/* Action buttons */
+.action-btns {
+    display: flex;
+    gap: 8px;
+}
+.btn-sm {
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.btn-sm.edit { background: var(--pink-100); color: var(--pink-500); }
+.btn-sm.edit:hover { background: var(--pink-500); color: white; }
+.btn-sm.danger { background: #ffebee; color: #e53935; }
+.btn-sm.danger:hover { background: #e53935; color: white; }
+.btn-sm.success { background: #e8f5e9; color: #43a047; }
+.btn-sm.success:hover { background: #43a047; color: white; }
+.btn-sm.warning { background: #fff3e0; color: #ef6c00; }
+.btn-sm.warning:hover { background: #ef6c00; color: white; }
+.btn-sm.add { background: var(--pink-500); color: white; }
+.btn-sm.add:hover { background: var(--pink-600); }
+
+/* Status badge */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.status-badge.active { background: #e8f5e9; color: #43a047; }
+.status-badge.inactive { background: #ffebee; color: #e53935; }
+
+/* Role badge */
+.role-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.role-badge.super_admin { background: #e3f2fd; color: #1565c0; }
+.role-badge.admin { background: var(--pink-100); color: var(--pink-500); }
+
+/* Config bar */
+.config-bar {
+    background: var(--bg-white);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-sm);
+}
+.config-bar .config-label { font-size: 15px; color: var(--text-secondary); }
+.config-bar .config-value { font-size: 24px; font-weight: 700; color: var(--pink-500); margin-left: 16px; }
+.config-bar .config-actions { display: flex; gap: 10px; align-items: center; }
+.config-input {
+    width: 80px;
+    padding: 8px 12px;
+    border: 1px solid #eee;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+.modal-card {
+    width: 500px;
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-lg);
+}
+.modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+.modal-field { margin-bottom: 16px; }
+.modal-field label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+.modal-field input,
+.modal-field select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #eee;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition);
+}
+.modal-field input:focus,
+.modal-field select:focus {
+    border-color: var(--pink-300);
+    box-shadow: 0 0 0 3px var(--pink-100);
+}
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+.modal-cancel {
+    padding: 10px 24px;
+    background: var(--bg-light);
+    border: 1px solid #eee;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.modal-cancel:hover { border-color: var(--pink-300); }
+.modal-confirm {
+    padding: 10px 24px;
+    background: var(--pink-500);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.modal-confirm:hover { background: var(--pink-600); }
+
+.modal-error {
+    color: var(--pink-500);
+    font-size: 13px;
+    text-align: center;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .admin-page { padding: 20px 16px; }
+    .config-bar { flex-direction: column; gap: 12px; }
+    .modal-card { width: 90%; }
+}

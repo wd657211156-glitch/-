@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车 - MISSME</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+<div class="announcement">✦ 春季新品首发 · 满399减50 · 新会员专享9折 ✦</div>
+
+<nav class="navbar">
+    <div class="nav-logo">MISSME<span>PRET A PORTER</span></div>
+    <ul class="nav-links">
+        <li><a href="index.html">全部</a></li>
+        <li><a href="index.html">连衣裙</a></li>
+        <li><a href="index.html">上装</a></li>
+        <li><a href="index.html">下装</a></li>
+        <li><a href="index.html">外套</a></li>
+        <li><a href="index.html">配饰</a></li>
+    </ul>
+    <div class="nav-actions">
+        <div class="nav-search">
+            <span class="search-icon">&#128269;</span>
+            <input type="text" placeholder="搜索心仪单品..." id="searchInput">
+        </div>
+        <button class="nav-icon-btn" id="userBtn" title="登录/注册">&#128100;</button>
+        <button class="nav-icon-btn cart-badge" id="cartBtn">
+            &#128722;
+            <span class="badge" id="cartCount">0</span>
+        </button>
+    </div>
+</nav>
+
+<div class="cart-page">
+    <h2 class="cart-page-title">我的购物车</h2>
+    <div id="cartBody"></div>
+    <div class="cart-summary" id="cartSummary" style="display:none">
+        <div>
+            <span class="cart-total-label">合计</span>
+            <span class="cart-total-amount" id="cartTotal">¥0</span>
+        </div>
+        <button class="btn-checkout">去结算</button>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo">MISSME</div>
+            <p>专注于为现代女性提供时尚、优雅、舒适的穿搭体验。</p>
+        </div>
+        <div class="footer-col"><h4>购物指南</h4><ul><li>购物流程</li><li>尺码说明</li><li>支付方式</li></ul></div>
+        <div class="footer-col"><h4>售后服务</h4><ul><li>退换政策</li><li>售后流程</li><li>投诉建议</li></ul></div>
+        <div class="footer-col"><h4>关于我们</h4><ul><li>品牌故事</li><li>门店地址</li><li>联系客服</li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 MISSME · 女装精品商城 · All Rights Reserved</div>
+</footer>
+
+<div class="toast" id="toast">
+    <span class="toast-icon">&#10003;</span>
+    <span id="toastMsg"></span>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/state.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/cart.js"></script>
+<script>
+    State.init();
+    initNavbar();
+    loadCart();
+</script>
+</body>
+</html>

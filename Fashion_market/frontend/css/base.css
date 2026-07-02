@@ -1,0 +1,108 @@
+:root {
+    --pink-100: #fce4ec;
+    --pink-200: #f8bbd0;
+    --pink-300: #f48fb1;
+    --pink-400: #ec407a;
+    --pink-500: #e91e63;
+    --pink-600: #c2185b;
+    --gold: #d4a574;
+    --gold-light: #f5e6d3;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-light: #999999;
+    --bg-white: #ffffff;
+    --bg-light: #fafafa;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.15);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --transition: all 0.3s ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
+    color: var(--text-primary);
+    background: var(--bg-light);
+    line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; }
+input { outline: none; }
+
+.page-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.announcement {
+    background: var(--pink-500);
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 14px 40px;
+    background: var(--pink-500);
+    color: white;
+    border-radius: 30px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+.btn-primary:hover {
+    background: var(--pink-600);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+    padding: 10px 20px;
+    background: var(--bg-light);
+    color: var(--text-primary);
+    border: 1px solid #eee;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: var(--transition);
+}
+.btn-outline:hover {
+    border-color: var(--pink-300);
+    color: var(--pink-500);
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: var(--bg-white);
+    border-radius: var(--radius-sm);
+    padding: 14px 24px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 300;
+    transform: translateX(120%);
+    transition: transform 0.4s ease;
+    font-size: 14px;
+}
+.toast.show { transform: translateX(0); }
+.toast-icon { color: var(--pink-500); font-size: 18px; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .page-wrapper { padding: 0 20px; }
+}
+@media (max-width: 768px) {
+    .page-wrapper { padding: 0 16px; }
+}

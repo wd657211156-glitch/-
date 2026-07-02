@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情 - MISSME</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+
+<div class="announcement">✦ 春季新品首发 · 满399减50 · 新会员专享9折 ✦</div>
+
+<nav class="navbar">
+    <div class="nav-logo">MISSME<span>PRET A PORTER</span></div>
+    <ul class="nav-links">
+        <li><a href="index.html">全部</a></li>
+        <li><a href="index.html">连衣裙</a></li>
+        <li><a href="index.html">上装</a></li>
+        <li><a href="index.html">下装</a></li>
+        <li><a href="index.html">外套</a></li>
+        <li><a href="index.html">配饰</a></li>
+    </ul>
+    <div class="nav-actions">
+        <div class="nav-search">
+            <span class="search-icon">&#128269;</span>
+            <input type="text" placeholder="搜索心仪单品..." id="searchInput">
+        </div>
+        <button class="nav-icon-btn" id="userBtn" title="登录/注册">&#128100;</button>
+        <button class="nav-icon-btn cart-badge" id="cartBtn">
+            &#128722;
+            <span class="badge" id="cartCount">0</span>
+        </button>
+    </div>
+</nav>
+
+<div class="detail-container" id="detailContainer">
+    <div class="detail-img" id="detailImg">&#128087;</div>
+    <div class="detail-info">
+        <div class="detail-brand" id="detailBrand">MISSME</div>
+        <h1 class="detail-name" id="detailName">加载中...</h1>
+        <div class="detail-price">
+            <span class="current" id="detailPrice">¥--</span>
+            <span class="original" id="detailOriginal">¥--</span>
+        </div>
+        <div class="detail-category" id="detailCategory"></div>
+        <div class="detail-stock" id="detailStock"></div>
+        <p class="detail-desc" id="detailDesc"></p>
+        <div class="detail-actions">
+            <button class="btn-primary" onclick="handleDetailAddToCart()">加入购物车</button>
+            <button class="btn-outline" onclick="window.location.href='index.html'">返回首页</button>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <div class="footer-logo">MISSME</div>
+            <p>专注于为现代女性提供时尚、优雅、舒适的穿搭体验。</p>
+        </div>
+        <div class="footer-col"><h4>购物指南</h4><ul><li>购物流程</li><li>尺码说明</li><li>支付方式</li></ul></div>
+        <div class="footer-col"><h4>售后服务</h4><ul><li>退换政策</li><li>售后流程</li><li>投诉建议</li></ul></div>
+        <div class="footer-col"><h4>关于我们</h4><ul><li>品牌故事</li><li>门店地址</li><li>联系客服</li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2026 MISSME · 女装精品商城 · All Rights Reserved</div>
+</footer>
+
+<div class="toast" id="toast">
+    <span class="toast-icon">&#10003;</span>
+    <span id="toastMsg"></span>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/state.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/navbar.js"></script>
+<script>
+    let currentProductId = null;
+
+    async function loadProductDetail() {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+        if (!id) {
+            window.location.href = "index.html";
+            return;
+        }
+        currentProductId = parseInt(id);
+
+        try {
+            const product = await API.getProduct(id);
+            document.getElementById("detailImg").textContent = getProductIcon(product.category_id);
+            document.getElementById("detailBrand").textContent = product.brand;
+            document.getElementById("detailName").textContent = product.name;
+            document.getElementById("detailPrice").textContent = `¥${product.price}`;
+            document.getElementById("detailOriginal").textContent = `¥${product.original_price}`;
+            document.getElementById("detailCategory").textContent = product.category_name ? `分类：${product.category_name}` : "";
+            document.getElementById("detailStock").textContent = `库存：${product.stock}件`;
+            document.getElementById("detailDesc").textContent = product.description || "";
+            document.title = `${product.name} - MISSME`;
+        } catch (e) {
+            showToast("商品不存在");
+            setTimeout(() => window.location.href = "index.html", 1500);
+        }
+    }
+
+    async function handleDetailAddToCart() {
+        if (!State.isLoggedIn()) {
+            showToast("请先登录");
+            setTimeout(() => window.location.href = "login.html", 1500);
+            return;
+        }
+        try {
+            await API.addToCart(currentProductId);
+            showToast("已加入购物车");
+            State.updateCartBadge();
+        } catch (e) {
+            showToast(e.message || "添加失败");
+        }
+    }
+
+    State.init();
+    initNavbar();
+    loadProductDetail();
+</script>
+</body>
+</html>
